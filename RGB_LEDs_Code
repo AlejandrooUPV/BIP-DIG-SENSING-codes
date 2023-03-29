@@ -1,0 +1,40 @@
+ledcSetup (ledChannel, freq, resolution);
+ledcAttachPin (ledPin, ledChannel);
+ledcWrite (ledChannel, dutyCycle);
+
+const int R_Led_pin = 25; //WEMOS RED PIN IO25
+const int G_Led_pin = 26; //WEMOS GREEN PIN IO26
+const int B_Led_pin = 27; //WEMOS BLUE PIN IO27
+
+const int R_Led_ch = 1; //PWM red channel
+const int G_Led_ch = 2; //PWM green channel
+const int B_Led_ch = 3; //PWM blue channel
+
+void setup() {
+ledcSetup(R_Led_ch, 5000, 8);
+ledcAttachPin(R_Led_pin, R_Led_ch);
+ledcSetup(G_Led_ch, 5000, 8);
+ledcAttachPin(G_Led_pin, G_Led_ch);
+ledcSetup(B_Led_ch, 5000, 8);
+ledcAttachPin(B_Led_pin, B_Led_ch);
+}
+
+void loop(){
+if(co2<300){
+ledcWrite(R_Led_ch, 0);
+ledcWrite(G_Led_ch, 255);
+ledcWrite(B_Led_ch, 0);
+}
+
+if(co2>300 && co2){
+ledcWrite(R_Led_ch, 255);
+ledcWrite(G_Led_ch, 90);
+ledcWrite(B_Led_ch, 0);
+}
+
+if(co2>=700){
+ledcWrite(R_Led_ch, 255);
+ledcWrite(G_Led_ch, 0);
+ledcWrite(B_Led_ch, 0);
+}
+}
