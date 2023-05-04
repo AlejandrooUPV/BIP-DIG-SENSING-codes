@@ -13,10 +13,6 @@ long DO = 523.25,  //definimos las frecuencias de las notas
      RE2 = 1174.66,
      FAS2 = 1479.98;
 
-DHT dht(DHTpin, DHT11);
-int Button1_Count = 0;
-int Button1_State, Button1_Old = 1;  //Switch pull down, so press button will read 0
-bool Backlight=true;
 
 void setup() {
 
